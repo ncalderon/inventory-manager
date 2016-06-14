@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/controllers/BasicBean.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/controllers/LocalidadBean.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/controllers/TipoLocalidadBean.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/dao/BasicDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/dto/DespachoEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/dto/DevolucionEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/dto/ItemEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/dto/LocalidadEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/dto/TipoLocalidadEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/utils/DateUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/itla/javier/im/utils/HibernateUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/faces-config.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/index.xhtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/layout" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/views" charset="UTF-8" />
+  </component>
+</project>

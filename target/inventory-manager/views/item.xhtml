@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <ui:composition template="/layout/template.xhtml">
+        <ui:define name="titleContent">Mantenimiento de Localidades</ui:define>
+        <ui:define name="content">
+            <h:form id="containerForm" >
+
+                <p:commandButton id="openNewDialog" value="Nuevo" onclick="PF('item_new_dlg').show();" type="button" />
+                <!--Dialog New item-->
+                <p:dialog id="new_dialog" widgetVar="item_new_dlg" modal="true" header="#{!itemBean.updateItem ? 'Nuevo' : 'Editar'}">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="codigo" value="Codigo"></h:outputLabel>
+                        <p:outputLabel id="codigo" value="#{itemBean.entityItem.itemId}"></p:outputLabel>
+                        <h:outputLabel for="nombre" value="Nombre"></h:outputLabel>
+                        <h:inputText id="nombre" value="#{itemBean.entityItem.nombre}"></h:inputText>
+                        <h:outputLabel for="description" value="Description"></h:outputLabel>
+                        <h:inputText id="description" value="#{itemBean.entityItem.descripcion}"></h:inputText>
+
+                        <h:outputLabel for="cantidad_total" value="Cantidad Total"></h:outputLabel>
+                        <h:inputText id="cantidad_total" value="#{itemBean.entityItem.cantidadTotal}"></h:inputText>
+
+                        <h:outputLabel for="cantidad_reparacion" value="Cantidad Reparacion"></h:outputLabel>
+                        <h:inputText id="cantidad_reparacion" value="#{itemBean.entityItem.cantidadReparacion}"></h:inputText>
+
+                        <h:outputLabel for="cantidad_prestada" value="Cantidad Prestada"></h:outputLabel>
+                        <h:inputText id="cantidad_prestada" value="#{itemBean.entityItem.cantidadPrestada}"></h:inputText>
+
+                        <h:outputLabel for="suplidor_id" value="Suplidor"></h:outputLabel>
+                        <h:inputText id="suplidor_id" value="#{itemBean.entityItem.suplidorId}"></h:inputText>
+
+                        <h:outputLabel for="linea_id" value="Linea"></h:outputLabel>
+                        <h:inputText id="linea_id" value="#{itemBean.entityItem.lineaId}"></h:inputText>
+
+                        <p:commandButton oncomplete="PF('item_new_dlg').hide();" rendered="#{!itemBean.updateItem}" class="btn btn-default" value="Agregar" action="#{itemBean.add}" update=":containerForm"/>
+                        <p:commandButton oncomplete="PF('item_new_dlg').hide();" rendered="#{itemBean.updateItem}" class="btn btn-default" value="Guardar" action="#{itemBean.save}" update=":containerForm"/>
+                        <p:commandButton onclick="PF('item_new_dlg').hide();" value="Cancelar"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+                <!--item List-->
+                <p:dataTable id="itemDatatable" value="#{itemBean.entityList}" var="entityItem">
+                    <p:column headerText="Codigo">
+                        <h:outputText value="#{entityItem.itemId}" />
+                    </p:column>
+
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{entityItem.nombre}" />
+                    </p:column>
+
+                    <p:column headerText="Cantidad Total">
+                        <h:outputText value="#{entityItem.cantidadTotal}" />
+                    </p:column>
+
+                    <p:column headerText="Cantidad Reparacion">
+                        <h:outputText value="#{entityItem.cantidadReparacion}" />
+                    </p:column>
+
+                    <p:column headerText="Cantidad Prestada">
+                        <h:outputText value="#{entityItem.cantidadPrestada}" />
+                    </p:column>
+                    <!--<p:column headerText="">-->
+                    <!--<p:commandButton id="deleteitemBtn" update=":containerForm" value="Eliminar" actionListener="#{itemBean.delete(entityItem)}" />-->
+                    <!--</p:column>-->
+                    <p:column headerText="">
+                        <p:commandButton id="edititemBtn" icon="ui-icon-edit" Title="Editar" action="#{itemBean.edit(entityItem)}" update=":containerForm" oncomplete="PF('item_new_dlg').show();"/>
+                    </p:column>
+                </p:dataTable>
+
+                <h:panelGroup rendered="#{empty itemBean.entityList}">
+                    <p>Tabla vacia, agrega nuevos items.</p>
+                </h:panelGroup>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

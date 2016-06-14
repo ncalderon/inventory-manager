@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <ui:composition template="/layout/template.xhtml">
+        <ui:define name="titleContent">Mantenimiento de Localidades</ui:define>
+        <ui:define name="content">
+            <h:form id="containerForm" >
+
+                <p:commandButton id="openNewDialog" value="Nuevo" onclick="PF('despacho_new_dlg').show();" type="button" />
+                <!--Dialog New despacho-->
+                <p:dialog id="new_dialog" widgetVar="despacho_new_dlg" modal="true" header="#{!despachoBean.updateItem ? 'Nuevo' : 'Editar'}">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="codigo" value="Codigo"></h:outputLabel>
+                        <p:outputLabel id="codigo" value="#{despachoBean.entityItem.despachoId}"></p:outputLabel>
+
+                        <h:outputLabel for="item_id" value="Item"></h:outputLabel>
+                        <h:inputText id="item_id" value="#{despachoBean.entityItem.itemId}"></h:inputText>
+
+                        <h:outputLabel for="descripcion" value="Descripcion"></h:outputLabel>
+                        <h:inputText id="descripcion" value="#{despachoBean.entityItem.descripcion}"></h:inputText>
+
+                        <h:outputLabel for="entregado_por" value="Entregado Por"></h:outputLabel>
+                        <h:inputText id="entregado_por" value="#{despachoBean.entityItem.entregadoPor}"></h:inputText>
+
+                        <h:outputLabel for="entregado_a" value="Entregado a"></h:outputLabel>
+                        <h:inputText id="entregado_a" value="#{despachoBean.entityItem.entregadoA}"></h:inputText>
+
+                        <h:outputLabel for="tipo_localidad" value="Tipo Localidad"></h:outputLabel>
+                        <h:inputText id="tipo_localidad" value="#{despachoBean.entityItem.tipoLocalidad}"></h:inputText>
+
+                        <p:commandButton oncomplete="PF('despacho_new_dlg').hide();" rendered="#{!despachoBean.updateItem}" class="btn btn-default" value="Agregar" action="#{despachoBean.add}" update=":containerForm"/>
+                        <p:commandButton oncomplete="PF('despacho_new_dlg').hide();" rendered="#{despachoBean.updateItem}" class="btn btn-default" value="Guardar" action="#{despachoBean.save}" update=":containerForm"/>
+                        <p:commandButton onclick="PF('despacho_new_dlg').hide();" value="Cancelar"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+                <!--despacho List-->
+                <p:dataTable id="despachoDatatable" value="#{despachoBean.entityList}" var="entityItem">
+                    <p:column headerText="Codigo">
+                        <h:outputText value="#{entityItem.despachoId}" />
+                    </p:column>
+
+                    <p:column headerText="Item">
+                        <h:outputText value="#{entityItem.itemId}" />
+                    </p:column>
+
+                    <p:column headerText="Tipo Localidad">
+                        <h:outputText value="#{entityItem.tipoLocalidad}" />
+                    </p:column>
+
+                    <p:column headerText="Entregado Por">
+                        <h:outputText value="#{entityItem.entregadoPor}" />
+                    </p:column>
+
+                    <p:column headerText="Entregado A">
+                        <h:outputText value="#{entityItem.entregadoA}" />
+                    </p:column>
+
+
+                    <!--<p:column headerText="">-->
+                    <!--<p:commandButton id="deletedespachoBtn" update=":containerForm" value="Eliminar" actionListener="#{despachoBean.delete(entityItem)}" />-->
+                    <!--</p:column>-->
+                    <!--<p:column headerText="">
+                        <p:commandButton id="editdespachoBtn" icon="ui-icon-edit" Title="Editar" action="#{despachoBean.edit(entityItem)}" update=":containerForm" oncomplete="PF('despacho_new_dlg').show();"/>
+                    </p:column>-->
+                </p:dataTable>
+
+                <h:panelGroup rendered="#{empty despachoBean.entityList}">
+                    <p>Tabla vacia, agrega nuevos despachos.</p>
+                </h:panelGroup>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

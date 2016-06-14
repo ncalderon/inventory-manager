@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <ui:composition template="/layout/template.xhtml">
+        <ui:define name="titleContent">Mantenimiento de Localidades</ui:define>
+        <ui:define name="content">
+            <h:form id="containerForm" >
+
+                <p:commandButton id="openNewDialog" value="Nuevo" onclick="PF('localidad_new_dlg').show();" type="button" />
+                <!--Dialog New localidad-->
+                <p:dialog id="new_dialog" widgetVar="localidad_new_dlg" modal="true" header="#{!localidadBean.updateItem ? 'Nuevo' : 'Editar'}">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="codigo" value="Codigo"></h:outputLabel>
+                        <p:outputLabel id="codigo" value="#{localidadBean.entityItem.localidadId}"></p:outputLabel>
+                        <h:outputLabel for="nombre" value="Nombre"></h:outputLabel>
+                        <h:inputText id="nombre" value="#{localidadBean.entityItem.nombre}"></h:inputText>
+                        <h:outputLabel for="address" value="Direccion"></h:outputLabel>
+                        <h:inputText id="address" value="#{localidadBean.entityItem.direccion}"></h:inputText>
+
+                        <p:outputLabel for="tipoId" value="Tipo de Localidad"/>
+                        <p:selectOneMenu id="tipoId" value="#{localidadBean.entityItem.tipoId}" style="width: 100%">
+                            <f:selectItem itemLabel="Seleccione" itemValue=""/>
+                            <f:selectItem itemLabel="Lista" itemValue="1"/>
+                            <f:selectItem itemLabel="Suplidor" itemValue="2"/>
+                        </p:selectOneMenu>
+
+                        <p:commandButton oncomplete="PF('localidad_new_dlg').hide();" rendered="#{!localidadBean.updateItem}" class="btn btn-default" value="Agregar" action="#{localidadBean.add}" update=":containerForm"/>
+                        <p:commandButton oncomplete="PF('localidad_new_dlg').hide();" rendered="#{localidadBean.updateItem}" class="btn btn-default" value="Guardar" action="#{localidadBean.save}" update=":containerForm"/>
+                        <p:commandButton onclick="PF('localidad_new_dlg').hide();" value="Cancelar"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+                <!--localidad List-->
+                <p:dataTable id="localidadDatatable" value="#{localidadBean.entityList}" var="entityItem">
+                    <p:column headerText="Codigo">
+                        <h:outputText value="#{entityItem.localidadId}" />
+                    </p:column>
+
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{entityItem.nombre}" />
+                    </p:column>
+
+                    <p:column headerText="Tipo Localidad">
+                        <h:outputText value="#{entityItem.tipoId}" />
+                    </p:column>
+                    <!--<p:column headerText="">-->
+                    <!--<p:commandButton id="deletelocalidadBtn" update=":containerForm" value="Eliminar" actionListener="#{localidadBean.delete(entityItem)}" />-->
+                    <!--</p:column>-->
+                    <p:column headerText="">
+                        <p:commandButton id="editlocalidadBtn" icon="ui-icon-edit" Title="Editar" action="#{localidadBean.edit(entityItem)}" update=":containerForm" oncomplete="PF('localidad_new_dlg').show();"/>
+                    </p:column>
+                </p:dataTable>
+
+                <h:panelGroup rendered="#{empty localidadBean.entityList}">
+                    <p>Tabla vacia, agrega nuevos localidads.</p>
+                </h:panelGroup>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

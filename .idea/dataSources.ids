@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @itla" uuid="33b4823a-3a89-4234-a1db-35424ed7867c">
+    <database-info product="MySQL" version="5.5.42-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="cdb_315fe4b3b3"/>
+    <table name="despacho" schema="" catalog="cdb_315fe4b3b3" type="TABLE">
+      <column name="DESPACHO_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ITEM_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ENTREGADO_POR" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTREGADO_A" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TIPO_LOCALIDAD" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DESCRIPCION" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="DESPACHO_ID"/>
+    </table>
+    <table name="devolucion" schema="" catalog="cdb_315fe4b3b3" type="TABLE">
+      <column name="DEVOLUCION_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ITEM_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="DEVUELTO_POR" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTREGADO_A" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FECHA_DEVOLUCION" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="TIPO_LOCALIDAD" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="DEVOLUCION_ID"/>
+    </table>
+    <table name="item" schema="" catalog="cdb_315fe4b3b3" type="TABLE">
+      <column name="ITEM_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NOMBRE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPCION" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CANTIDAD_TOTAL" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CANTIDAD_REPARACION" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CANTIDAD_PRESTADA" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SUPLIDOR_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="LINEA_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ITEM_ID"/>
+    </table>
+    <table name="localidad" schema="" catalog="cdb_315fe4b3b3" type="TABLE">
+      <column name="LOCALIDAD_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NOMBRE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DIRECCION" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TIPO_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="LOCALIDAD_ID"/>
+    </table>
+    <table name="tipo_localidad" schema="" catalog="cdb_315fe4b3b3" type="TABLE">
+      <column name="TIPO_LOCALIDAD_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NOMBRE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="TIPO_LOCALIDAD_ID"/>
+    </table>
+  </data-source>
+</component>

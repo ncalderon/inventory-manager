@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://us-cdbr-azure-northcentral-a.cleardb.com:3306/cdb_315fe4b3b3</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <property name="connection.username">b099076819b0e8</property>
+    <property name="connection.password">3ae037aa</property>
+
+    <mapping class="com.itla.javier.im.dto.TipoLocalidadEntity"/>
+    <mapping class="com.itla.javier.im.dto.ItemEntity"/>
+    <mapping class="com.itla.javier.im.dto.LocalidadEntity"/>
+    <mapping class="com.itla.javier.im.dto.DespachoEntity"/>
+    <mapping class="com.itla.javier.im.dto.DevolucionEntity"/>
+      <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
